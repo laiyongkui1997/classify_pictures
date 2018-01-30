@@ -1,0 +1,5 @@
+# ignore the pictures folder
+pictures
+
+# ignore node modules folder
+node_modules

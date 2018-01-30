@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block main%}
+<div id="container">
+    <div class="row">
+        <div class="col-md-6 col-sm-12 col-md-push-3">
+            <form action="/work" method="post" style="padding: 10px;">
+                <div class="form-group">
+                    <h3>Write the directory where your pictures are.</h3>
+                    <div class="col-md-10 col-sm-10" style="position: relative;">
+                        <input type="text" name="dirname" id="dirName" placeholder="write the path ..." style="position: absolute; width:100%; height: 40px; border-radius: 5px 0 0 5px; border: 1px solid #ddd; padding: 0 10px;" required>
+                    </div>
+                    <div class="col-md-2 col-sm-2" style="position: relative; padding-bottom: 80px; margin-bottom: 20px;">
+                        <input type="submit" class="btn btn-primary" value="Submit" style="position: absolute; width: 100%; height: 40px; border-radius: 0 5px 5px 0;">
+                        <!-- <input type="file" name="dir" id="dirButton" onchange="getfolder(event)" style="opacity: 0; position: absolute; width: 100%; height: 40px; border-radius: 0 5px 5px 0;" webkitdirectory mozdirectory msdirectory odirectory directory multiple> -->
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+    </div>
+</div>
+
+<script type="text/javascript">
+    // $("#dirButton").on("change", function() {
+    //     console.log("changed!!!");
+    //     $("#dirName").val($(this).val());
+    // })
+
+    function browseFolder(path) {
+        try {
+            var Message = "\u8bf7\u9009\u62e9\u6587\u4ef6\u5939"; //选择框提示信息
+            var Shell = new ActiveXObject("Shell.Application");
+            var Folder = Shell.BrowseForFolder(0, Message, 64, 17); //起始目录为：我的电脑
+            //var Folder = Shell.BrowseForFolder(0, Message, 0); //起始目录为：桌面
+            if (Folder != null) {
+                Folder = Folder.items(); // 返回 FolderItems 对象
+                Folder = Folder.item(); // 返回 Folderitem 对象
+                Folder = Folder.Path; // 返回路径
+                if (Folder.charAt(Folder.length - 1) != "\\") {
+                    Folder = Folder + "\\";
+                }
+                document.getElementById(path).value = Folder;
+                return Folder;
+            }
+        }
+        catch (e) {
+            alert(e.message);
+        }
+    }
+
+    function getfolder(e) {
+        var files = e.target.files;
+        // var path = files[0].webkitRelativePath;
+        var path = files[0].path;
+        // var Folder = path.split("/");
+        // alert(Folder[0]);
+        $("#dirName").val(path);
+    }
+</script>
+{% endblock %}

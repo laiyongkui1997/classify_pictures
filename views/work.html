@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block main%}
+<div class="container">
+    <div class="row">
+        <h3>Start working!</h3>
+        <p>directory: {{ dirname }} <a href="/" class="btn btn-primary" role="button">edit</a></p>
+        <p>picture number: {{ num }}</p>
+        <div class="col-md-6 col-sm-12" style="height: 400px;">
+            <!-- <div> -->
+                <img src="{{ dirname }}/{{ src }}" alt="" style="width: 100%;">
+            <!-- </div> -->
+        </div>
+        <div class="col-md-6 col-sm-12">
+            
+        </div>
+    </div>
+</div>
+{% endblock %}
