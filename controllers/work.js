@@ -22,7 +22,7 @@ module.exports = {
             hair_color = ctx.request.body.hair_color,
             skin_color = ctx.request.body.skin_color;
         
-        var vector = '(' + sex + ', ' + eye_size + ', ' + eyelid + ', ' + ear_size + ', ' + mouth_size + ', ' + nose_height + ', ' + nose_length + ', ' + face + ', ' + hair_length + ', ' + hair_type + ', ' + hair_color + ', ' + skin_color  + ')';
+        var vector = '[' + sex + ', ' + eye_size + ', ' + eyelid + ', ' + ear_size + ', ' + mouth_size + ', ' + nose_height + ', ' + nose_length + ', ' + face + ', ' + hair_length + ', ' + hair_type + ', ' + hair_color + ', ' + skin_color  + ']';
         var data = items[num]  + '\t' + vector  + '\n';
         console.log(data);
 

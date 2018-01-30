@@ -38,3 +38,11 @@ node app.js
 ```
 http://localhost:3000/
 ```
+
+#### 查看结果
+标注的结果是在output文件夹下的result文件中  
+数据格式：  
+```
+[文件名]   [vector]
+```
+
