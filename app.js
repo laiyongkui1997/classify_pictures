@@ -22,6 +22,7 @@ if (! isProduction) {
     let staticFiles = require('./static-files');
     app.use(staticFiles('/static/', __dirname + '/static'));
     app.use(staticFiles('/pictures/', __dirname + '/pictures'));
+    app.use(staticFiles('/output/', __dirname + '/output'));
 }
 
 // parse request body:
