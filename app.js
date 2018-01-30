@@ -21,6 +21,7 @@ app.use(async (ctx, next) => {
 if (! isProduction) {
     let staticFiles = require('./static-files');
     app.use(staticFiles('/static/', __dirname + '/static'));
+    app.use(staticFiles('/pictures/', __dirname + '/pictures'));
 }
 
 // parse request body:

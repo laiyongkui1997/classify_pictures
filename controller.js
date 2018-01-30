@@ -2,7 +2,10 @@ const fs = require('fs');
 
 function addMapping(router, mapping) {
     for ( var url in mapping ) {
-        if ( url.startsWith('GET ') ) {
+        if ( url.startsWith('GET /pictures') ) {
+            var path = url.substring(4);
+            
+        } else if ( url.startsWith('GET ') ) {
             var path = url.substring(4);
             router.get(path, mapping[url]);
             console.log(`register URL mapping: GET ${path}`);

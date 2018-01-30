@@ -1,60 +1,137 @@
 {% extends "base.html" %}
 {% block main%}
-<div id="container">
+<div class="container">
     <div class="row">
-        <div class="col-md-6 col-sm-12 col-md-push-3">
-            <form action="/work" method="post" style="padding: 10px;">
-                <div class="form-group">
-                    <h3>Write the directory where your pictures are.</h3>
-                    <div class="col-md-10 col-sm-10" style="position: relative;">
-                        <input type="text" name="dirname" id="dirName" placeholder="write the path ..." style="position: absolute; width:100%; height: 40px; border-radius: 5px 0 0 5px; border: 1px solid #ddd; padding: 0 10px;" required>
-                    </div>
-                    <div class="col-md-2 col-sm-2" style="position: relative; padding-bottom: 80px; margin-bottom: 20px;">
-                        <input type="submit" class="btn btn-primary" value="Submit" style="position: absolute; width: 100%; height: 40px; border-radius: 0 5px 5px 0;">
-                        <!-- <input type="file" name="dir" id="dirButton" onchange="getfolder(event)" style="opacity: 0; position: absolute; width: 100%; height: 40px; border-radius: 0 5px 5px 0;" webkitdirectory mozdirectory msdirectory odirectory directory multiple> -->
-                    </div>
-                </div>
-            </form>
+        <h3>Start working!</h3>
+        <p>picture number: {{ num }}</p>
+        <div class="col-md-6 col-sm-12">
+            <div class="well">
+                <img src="/pictures/{{ src }}" alt="" style="width: 100%;">
+            </div>
         </div>
-        
+        <div class="col-md-6 col-sm-12">
+            <div class="panel panel-warning">
+                <div class="panel-heading">label this picture</div>
+                <div class="panel-body">
+                    <form action="/work" method="POST" class="form-horizontal">
+                        <div class="form-group">
+                            <label for="sex" class="control-label col-sm-2">性别</label>
+                            <div class="col-sm-10">
+                                <input type="radio" name="sex" value="male">男
+                                <input type="radio" name="sex" value="female">女
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="eye-size" class="control-label col-sm-2">眼睛大小</label>
+                            <div class="col-sm-10">
+                                <input type="radio" name="eye-size" value="big">大
+                                <input type="radio" name="eye-size" value="smal">小
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="eyelid" class="control-label col-sm-2">单双眼皮</label>
+                            <div class="col-sm-10" required>
+                                <input type="radio" name="eyelid" value="single">单
+                                <input type="radio" name="eyelid" value="double">双
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ear-size" class="control-label col-sm-2">耳朵大小</label>
+                            <div class="col-sm-10" required>
+                                <input type="radio" name="ear-size" value="big">大
+                                <input type="radio" name="ear-size" value="small">小
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="mouth-size" class="control-label col-sm-2">嘴巴大小</label>
+                            <div class="col-sm-10" required>
+                                <input type="radio" name="mouth-size" value="big">大
+                                <input type="radio" name="mouth-size" value="small">小
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nose-height" class="control-label col-sm-2">鼻子高低</label>
+                            <div class="col-sm-10" required>
+                                <input type="radio" name="nose-height" value="high">高挺
+                                <input type="radio" name="nose-height" value="low">扁平
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nose-length" class="control-label col-sm-2">鼻子高低</label>
+                            <div class="col-sm-10" required>
+                                <input type="radio" name="nose-length" value="long">长
+                                <input type="radio" name="nose-length" value="short">短
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="eyelid" class="control-label col-sm-2">单双眼皮</label>
+                            <div class="col-sm-10" required>
+                                <input type="radio" name="eyelid" value="single">单
+                                <input type="radio" name="eyelid" value="double">双
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="face" class="control-label col-sm-2">脸型</label>
+                            <div class="col-sm-10" required>
+                                <input type="radio" name="face" value="1">国字形脸型
+                                <input type="radio" name="face" value="2">目字形脸型
+                                <input type="radio" name="face" value="3">田字形脸型
+                                <input type="radio" name="face" value="4">由字形脸型
+                                <input type="radio" name="face" value="5">申字形脸型
+                                <input type="radio" name="face" value="6">甲字形脸型
+                                <input type="radio" name="face" value="7">用字形脸型
+                                <input type="radio" name="face" value="8">风字形脸型
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="hair-length" class="control-label col-sm-2">头发长短</label>
+                            <div class="col-sm-10" required>
+                                <input type="radio" name="hair-length" value="long">长发
+                                <input type="radio" name="hair-length" value="short">短发
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="hair-type" class="control-label col-sm-2">头发卷直</label>
+                            <div class="col-sm-10" required>
+                                <input type="radio" name="hair-type" value="roll">卷发
+                                <input type="radio" name="hair-type" value="straight">直发
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="hair-color" class="control-label col-sm-2">头发颜色</label>
+                            <div class="col-sm-10" required>
+                                <input type="radio" name="hair-color" value="black">黑色
+                                <input type="radio" name="hair-color" value="brown">棕色
+                                <input type="radio" name="hair-color" value="golden">金色
+                                <input type="radio" name="hair-color" value="blue">蓝色
+                                <input type="radio" name="hair-color" value="green">绿色
+                                <input type="radio" name="hair-color" value="white">白色
+                                <input type="radio" name="hair-color" value="yellow">黄色
+                                <input type="radio" name="hair-color" value="red">红色
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="skin-color" class="control-label col-sm-2">肤色</label>
+                            <div class="col-sm-10" required>
+                                <input type="radio" name="skin-color" value="1">超白
+                                <input type="radio" name="skin-color" value="2">白
+                                <input type="radio" name="skin-color" value="3">正常
+                                <input type="radio" name="skin-color" value="4">略黑
+                                <input type="radio" name="skin-color" value="5">黑
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-10">
+                                <div class="col-sm-10" required>
+                                    <button class="btn btn-default" style="display: {{ display }}">上一个</button>
+                                    <button type="submit" class="btn btn-primary">下一个</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
-<script type="text/javascript">
-    // $("#dirButton").on("change", function() {
-    //     console.log("changed!!!");
-    //     $("#dirName").val($(this).val());
-    // })
-
-    function browseFolder(path) {
-        try {
-            var Message = "\u8bf7\u9009\u62e9\u6587\u4ef6\u5939"; //选择框提示信息
-            var Shell = new ActiveXObject("Shell.Application");
-            var Folder = Shell.BrowseForFolder(0, Message, 64, 17); //起始目录为：我的电脑
-            //var Folder = Shell.BrowseForFolder(0, Message, 0); //起始目录为：桌面
-            if (Folder != null) {
-                Folder = Folder.items(); // 返回 FolderItems 对象
-                Folder = Folder.item(); // 返回 Folderitem 对象
-                Folder = Folder.Path; // 返回路径
-                if (Folder.charAt(Folder.length - 1) != "\\") {
-                    Folder = Folder + "\\";
-                }
-                document.getElementById(path).value = Folder;
-                return Folder;
-            }
-        }
-        catch (e) {
-            alert(e.message);
-        }
-    }
-
-    function getfolder(e) {
-        var files = e.target.files;
-        // var path = files[0].webkitRelativePath;
-        var path = files[0].path;
-        // var Folder = path.split("/");
-        // alert(Folder[0]);
-        $("#dirName").val(path);
-    }
-</script>
 {% endblock %}
