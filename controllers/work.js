@@ -32,9 +32,9 @@ module.exports = {
         var nose_lengthW = nose_length==0 ? '长' : '短';
         if ( face==0 ) {
             var faceW = '国字脸';
-        } else if ( fase==1 ) {
+        } else if ( face==1 ) {
             var faceW = '瓜子脸';
-        } else if ( fase==1 ) {
+        } else if ( face==1 ) {
             var faceW = '鹅蛋脸';
         }
         var hair_lengthW = hair_length==0 ? '长' : '短';
@@ -91,6 +91,7 @@ module.exports = {
         } )
 
         num ++;
+        fs.writeFileSync(path.normalize(__dirname + '/../output/middle'), num);
         ctx.render('index.html', {num: num, src: items[num], display: 'none'});
     }
 };
